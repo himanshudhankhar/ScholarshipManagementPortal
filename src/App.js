@@ -1,26 +1,46 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import cookie from 'react-cookies';
+import Login from './Components/Login';
+import Home from './Components/Home';
+import {Router,Switch,Route} from 'react-router-dom';
+import { createBrowserHistory } from "history";
+import Admin from './Components/Admin';
 
-function App() {
+const history = createBrowserHistory()
+
+
+class  App extends React.Component {
+  ///get the cookies if the login is done than 
+  /// show home page else show login page
+   constructor(props){
+     super(props);
+     this.state={
+       loginID:""
+     }
+   }
+  componentWillMount(){
+    this.state={loginID:cookie.load('login')}
+  }
+  render(){
+    // if(   this.state.loginID ===null || this.state.loginID==undefined || this.state.loginID.length==0 ){
+    //   return <Login/>;
+    // }else{
+      
+      
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}> 
+     
+    <Switch>
+      <Route path="/admin" component={Admin}/>
+      <Route path="/" component={Home}/>
+    </Switch>
+       
+         </Router> 
   );
 }
 
+  // }
+}
 export default App;
