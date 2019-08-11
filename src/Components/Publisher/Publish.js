@@ -21,7 +21,8 @@ constructor(props){
                 type:"",
                 id:0,
             }
-        ]
+        ],
+        applyForm:false
     
     }
     this.addAttribute=this.addAttribute.bind(this);
@@ -36,7 +37,26 @@ constructor(props){
     this.changes=this.changes.bind(this);
     this.dateChange=this.dateChange.bind(this);
     this.handleFileInput=this.handleFileInput.bind(this);
+    this.showApplyForm=this.showApplyForm.bind(this);
+    this.showOfficialLetter=this.showOfficialLetter.bind(this);
+    this.closeApplyForm = this.closeApplyForm.bind(this);
 }
+showOfficialLetter(){
+
+}
+
+closeApplyForm(){
+    this.setState({
+        applyForm:false
+    })
+}
+
+showApplyForm(){
+    this.setState({
+        applyForm:true
+    })
+}
+
 
 componentWillMount(){
     cookie.save('organisationName',"Swami Vivekanand Foundation");
@@ -348,6 +368,39 @@ Upload official Document:
                         <h6>{cookie.load('organisationName')}</h6>
                         <p>{this.state.description}</p>
                     </div>
+                    <div style={{display:"flex",flexDirection:"column",padding:10}}>
+                    <div style={{display:"flex",flexDirection:"column",backgroundColor:"#c7c7c7",padding:10,borderRadius:3,paddingTop:0,paddingBottom:20,border:"1px solid #333"}}>
+<p>  
+Timeline:
+</p>
+<b>{this.state.scholarshipStartDate}</b>
+to 
+<b>{this.state.scholarshipEndDate}</b> 
+    
+            </div>
+            <div style={{display:"flex",flexDirection:"column"}}>
+                <Button color="primary" variant="contained" style={{margin:3}} onClick={this.showApplyForm}>View Form</Button>
+                <Dialog open={this.state.applyForm} onClose={this.closeApplyForm}>
+                    <div style={{display:"flex",flexDirection:"column",padding:20}}>
+                    <h3>Apply for Scholarship</h3>
+                    <table>
+                    {
+                        this.state.inputs.map((key,id)=>{
+                            return (<tr>
+                                <td><b>{key.name}:</b></td>
+                                <td><input type={key.type} style={{width:300}}/></td>
+                                </tr>)
+                        })
+                    }
+                    </table>
+                    <Button variant="contained" color="primary" style={{margin:"auto"}}>Apply</Button>
+                    </div>
+                    </Dialog>
+
+
+                <Button color="primary" variant="contained" style={{margin:3}} onClick={this.showOfficialLetter}>View Official Letter</Button>
+            </div>  
+                        </div>
             </Card>
                 <div style={{display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"center"}}>
                 <h3><b>Status:  </b></h3><hr/><br/>
