@@ -8,7 +8,7 @@ import Archived from './Archived';
 import Results from './Results';
 import Verification from './Verification';
 import Publish from './Publish';
-
+import ActiveScholarships from './ActiveScholarships';
 export default class Publisher extends React.Component{
     render(){
         console.log(this.props);
@@ -24,6 +24,7 @@ export default class Publisher extends React.Component{
                       <Route path="/publisher/results" component={Results}/>
                       <Route path="/publisher/verification" component={Verification}/>
                       <Route path="/publisher/publish" component={Publish}/>
+                      <Route path="/publisher/activeScholarships" component={ActiveScholarships}/>
                       <Route path="/publisher" exact  component={DashBoard}/>
                       <Route path="/publisher/*" component={NotFoundPage}/> 
                 </Switch>

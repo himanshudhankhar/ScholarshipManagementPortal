@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { GoVerified,GoRocket } from "react-icons/go";
+import { GoVerified,GoRocket,GoMegaphone } from "react-icons/go";
 
 import { Link } from 'react-router-dom'
 
@@ -94,6 +94,19 @@ render(){
         </ListItemText>
         <ListItemIcon>
             <GoRocket   style={{color:'#fff',height:20,width:20,marginLeft:10}}/>
+        </ListItemIcon>
+       
+</ListItem>
+</Link>
+<Divider/>
+<Link to="/publisher/activeScholarships" style={{ textDecoration: 'none',display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+    
+<ListItem>
+        <ListItemText style={{color:"#fff"}}>
+            Active 
+        </ListItemText>
+        <ListItemIcon>
+            <GoMegaphone   style={{color:'#fff',height:20,width:20,marginLeft:10}}/>
         </ListItemIcon>
        
 </ListItem>
