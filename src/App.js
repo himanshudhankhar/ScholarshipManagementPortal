@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import {Router,Switch,Route} from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import Admin from './Components/Admin';
+import Publisher from './Components/Publisher/index';
 
 const history = createBrowserHistory()
 
@@ -25,15 +26,18 @@ class  App extends React.Component {
   }
   render(){
     // if(   this.state.loginID ===null || this.state.loginID==undefined || this.state.loginID.length==0 ){
-    //   return <Login/>;
-    // }else{
+      
+    
+    // return <Login/>;
+  
       
       
   return (
     <Router history={history}> 
      
     <Switch>
-      <Route path="/admin" component={Admin}/>
+      <Route path="/superAdmin" component={Admin}/>
+      <Route path="/publisher" component = {Publisher}/>
       <Route path="/" component={Home}/>
     </Switch>
        

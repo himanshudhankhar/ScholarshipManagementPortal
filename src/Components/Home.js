@@ -10,6 +10,7 @@ import {Route , Switch} from 'react-router-dom';
 import NotFoundPage from './NotFoundPage';
 export default class Home extends React.Component{
 render(){
+    console.log(this.props);
     return <div>
         <Header/>
         <Switch style={{margin:"auto"}}>

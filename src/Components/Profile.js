@@ -7,7 +7,8 @@ export default class Profile extends React.Component{
 
 render(){
     return(
-         <Card style={{margin:10,minWidth:300}}>
+        <Card style={{margin:10,minWidth:300, display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",textAlign:"center"}}>
+       
              <CardContent>
                 <img style={{width:200,height:200,border:"1px solid black", borderRadius:100}} src="https://previews.123rf.com/images/bondsza/bondsza1101/bondsza110100011/8630099-beautifull-male-white-lion-resting-in-the-hot-african-sun.jpg"/>
                  <h3>
