@@ -1,5 +1,7 @@
 import React from 'react';
 import {Card,Button,Dialog} from '@material-ui/core';
+import Applicant from './Applicant';
+
 export default class ActivePost extends React.Component{
 constructor(props){
     super(props);
@@ -51,7 +53,15 @@ to
 
 <Dialog open={this.state.displayApplications} onClose={this.closeApplications}>
 <div style={{display:"flex",flexDirection:"column",padding:10,textAlign:"center"}}> 
-hi
+<h1>
+    Applicants
+</h1>
+<p> you can reject and accept the applications from here only.</p>
+
+<Applicant/>
+<Applicant/>
+<Applicant/>
+
 
 
     </div>
