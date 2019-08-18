@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Button} from '@material-ui/core';
 export default class ApplyForm extends React.Component{
 
 //what does apply form contains 
@@ -15,94 +15,70 @@ constructor(props){
         contact:"",
         college:"",
         course:"",
-        cgpa:""
+        cgpa:"",
+    //component will mount or did mount will provide us these functionalities
+
+        formDetails:[{
+            key:0,
+            inputName:"Name",
+            inputType:"text",
+            value:""
+        },
+   {
+       key:1,
+       inputName:"Email",
+       inputType:"text",
+       value:""
+   },
+   {key:2,
+       inputName:"Contact",
+       inputType:"number",
+       value:""
+   },{
+       key:3,
+       inputName:"College",
+       inputType:"text",
+       value:""
+   },{key:4,
+       inputName:"Course",
+       inputType:"text",
+       value:""
+   },{key:5,
+       inputName:"CGPA",
+       inputType:"number",
+       value:""
+   }
+    ]
     }
     this.handleChange=this.handleChange.bind(this);
+    this.applyForm=this.applyForm.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+}
+handleChange(event,key,id){
+    
+    key.value=event.target.value;
+    let cc =this.state.formDetails;
+    cc[id]=key;
+    this.setState({formDetails:cc});
+   console.log(cc);
 }
 
-handleChange(event){
-    console.log( event.target.id );
-    
+applyForm(){
+    console.log(this.state.formDetails);
 }
+ 
 render(){
     return(
         <div style={{display:"flex",flexDirection:"column",padding:10}}>
-            <table>
-            <tr>
-            <td>
-            Apply Upto:
-            </td>
-            <td>
-            12th Dec 2019
-            </td>
-            </tr>
-<tr>
-<td>
-Name:
-    </td>
-    <td>
-<input type="text" value={this.state.name}  id="name"onChange={this.handleChange} style={{width:300}}/>
-
-    </td>
-
-    </tr>
-
-    <tr>
-<td>
-Email:
-    </td>
-    <td>
-    <input type="text" value={this.state.email}  id="email"onChange={this.handleChange} style={{width:300}}/>
-     
-    </td>
-
-    </tr>
-
-<tr>
-<td>
-phone:
-    </td>
-    <td>
-    <input type="number" value={this.state.contact}  id="contact" onChange={this.handleChange} style={{width:300}}/>
-    </td>
-    </tr>
-
-    <tr>
-<td>
-College/School:
-    </td>
-    <td>
-    <input type="text" value={this.state.college}  id="college" onChange={this.handleChange} style={{width:300}}/>
-    </td>
-    </tr>
-
-
-    <tr>
-<td>
-Course:
-    </td>
-    <td>
-    <input type="text" value={this.state.course}  id="course" onChange={this.handleChange} style={{width:300}}/>
-    </td>
-    </tr>
-
-
-
-
-    <tr>
-<td>
-CGPA:
-    </td>
-    <td>
-    <input type="number" value={this.state.cgpa}  id="cgpa" onChange={this.handleChange} style={{width:300}}/>
-    </td>
-    </tr>
-
-
- 
-
-
-                </table>
+            <p><b>Fill the details for applying for scholarship</b></p>
+            <table style={{margin:10}}>
+       {this.state.formDetails.map((key,id)=>{
+         return  <tr><td><b>{key.inputName}</b></td>
+           <td><input type={key.inputType} value={key.value} style={{minWidth:300}} onChange={(event)=>{this.handleChange(event,key,id)}}/></td>
+           </tr>
+       })}
+           </table>
+           <Button variant="contained" color="primary" onClick={this.applyForm} style={{margin:"auto"}}>Apply</Button>
         </div>
     )
 }
